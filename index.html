@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maze Walkers</title>
+    <!-- Adding the 'Sixtyfour Convergence' font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #333333; /* Dark gray background */
             color: #ffffff; /* White text */
-            font-family: Arial, sans-serif;
+            font-family: 'Sixtyfour Convergence', Arial, sans-serif; /* Using the custom font */
             margin: 0;
             padding: 0;
             text-align: center;
@@ -21,7 +23,6 @@
         }
 
         .button {
-            background-color: #4682b4; /* Blue color */
             border: none;
             color: white;
             padding: 20px 0; /* Bigger button height */
@@ -36,19 +37,52 @@
             transition: background-color 0.3s ease;
         }
 
-        .button:hover {
-            background-color: #4169e1; /* Lighter blue on hover */
-        }
-
-        .button:active {
-            background-color: #2a4d70; /* Even darker blue on click */
-        }
-
         .button-container {
             margin-top: 50px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        /* Rainbow colors for the buttons */
+        .button:nth-child(1) {
+            background-color: red;
+        }
+
+        .button:nth-child(2) {
+            background-color: orange;
+        }
+
+        .button:nth-child(3) {
+            background-color: yellow;
+        }
+
+        .button:nth-child(4) {
+            background-color: green;
+        }
+
+        .button:nth-child(5) {
+            background-color: blue;
+        }
+
+        .button:nth-child(6) {
+            background-color: indigo;
+        }
+
+        .button:nth-child(7) {
+            background-color: violet;
+        }
+
+        .button:nth-child(8) {
+            background-color: pink;
+        }
+
+        .button:nth-child(9) {
+            background-color: purple;
+        }
+
+        .button:hover {
+            opacity: 0.8; /* Slightly transparent when hovered */
         }
 
         /* Optional: Add some responsive behavior for mobile devices */
@@ -69,9 +103,15 @@
     <h1>Maze Walkers</h1>
 
     <div class="button-container">
-        <button class="button">Start Game</button>
-        <button class="button">Options</button>
-        <button class="button">Exit</button>
+        <button class="button">Button 1</button>
+        <button class="button">Button 2</button>
+        <button class="button">Button 3</button>
+        <button class="button">Button 4</button>
+        <button class="button">Button 5</button>
+        <button class="button">Button 6</button>
+        <button class="button">Button 7</button>
+        <button class="button">Button 8</button>
+        <button class="button">Button 9</button>
     </div>
 
     <script>
