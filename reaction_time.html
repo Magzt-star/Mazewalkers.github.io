@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            display: none;
+            width: 200px;
+            height: 200px;
+            background-color: #4682b4;
+            margin: 50px auto;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .start-btn {
+            background-color: #254d6e;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .start-btn:hover {
+            background-color: #3288bd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reaction Time Test</h1>
+    <button class="start-btn" onclick="startGame()">Start Test</button>
+    <div class="box" id="reaction-box" onclick="stopTimer()"></div>
+    <p class="message" id="message"></p>
+
+    <script>
+        let startTime, timeout;
+
+        function startGame() {
+            const box = document.getElementById('reaction-box');
+            const message = document.getElementById('message');
+
+            message.textContent = 'Wait for the box to appear...';
+            box.style.display = 'none';
+
+            // Random delay before the box appears
+            const delay = Math.random() * 2000 + 1000; // Between 1-3 seconds
+
+            timeout = setTimeout(() => {
+                startTime = Date.now();
+                box.style.display = 'block';
+                message.textContent = 'Click the box as fast as you can!';
+            }, delay);
+        }
+
+        function stopTimer() {
+            const box = document.getElementById('reaction-box');
+            const message = document.getElementById('message');
+
+            const reactionTime = Date.now() - startTime;
+            box.style.display = 'none';
+            message.textContent = `Your reaction time is ${reactionTime} ms!`;
+            clearTimeout(timeout);
+        }
+    </script>
+</body>
+</html>
