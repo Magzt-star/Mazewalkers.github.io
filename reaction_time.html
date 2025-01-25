@@ -37,6 +37,7 @@
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
+            margin-top: 50px; /* Adjusted to move it higher */
         }
 
         .board {
@@ -123,6 +124,12 @@
             text-align: center;
             color: white;
         }
+
+        .footer-text {
+            display: block;
+            white-space: pre-line; /* To allow splitting the text */
+        }
+
     </style>
 </head>
 <body>
@@ -139,7 +146,10 @@
             </div>
         </div>
         <div class="footer">
-            *if you reload the page or exit this reaction test, all your scores are deleted
+            <span class="footer-text">
+                *if you reload the page or exit this reaction test, 
+                all your scores are deleted
+            </span>
         </div>
     </div>
 
@@ -191,3 +201,4 @@
     </script>
 </body>
 </html>
+
