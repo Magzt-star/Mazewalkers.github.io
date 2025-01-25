@@ -23,6 +23,7 @@
         }
 
         .button {
+            background-color: #000080; /* Navy Blue background */
             border: none;
             color: white;
             padding: 20px 0; /* Bigger button height */
@@ -35,7 +36,6 @@
             margin: 15px auto; /* Center buttons horizontally with margin between */
             cursor: pointer;
             transition: background-color 0.3s ease;
-            background-color: #444444; /* Darker buttons */
         }
 
         .button-container {
@@ -43,80 +43,43 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-        }
-
-        /* Initial rainbow colors for the buttons */
-        .button:nth-child(1) {
-            background-color: red;
-        }
-
-        .button:nth-child(2) {
-            background-color: orange;
-        }
-
-        .button:nth-child(3) {
-            background-color: yellow;
-        }
-
-        .button:nth-child(4) {
-            background-color: lightgreen;
-        }
-
-        .button:nth-child(5) {
-            background-color: darkgreen;
-        }
-
-        .button:nth-child(6) {
-            background-color: lightblue;
-        }
-
-        .button:nth-child(7) {
-            background-color: navy;
-        }
-
-        .button:nth-child(8) {
-            background-color: purple;
-        }
-
-        .button:nth-child(9) {
-            background-color: magenta;
         }
 
         /* Hover effect for the buttons: Change to specific color */
         .button:nth-child(1):hover {
-            background-color: #ff0000 !important; /* Red */
+            background-color: #d53e4f; /* Color for Button 1 */
         }
 
         .button:nth-child(2):hover {
-            background-color: #ff7f00 !important; /* Orange */
+            background-color: #f46d43; /* Color for Button 2 */
         }
 
         .button:nth-child(3):hover {
-            background-color: #ffff00 !important; /* Yellow */
+            background-color: #fdae61; /* Color for Button 3 */
         }
 
         .button:nth-child(4):hover {
-            background-color: #90ee90 !important; /* Light Green */
+            background-color: #fee08b; /* Color for Button 4 */
         }
 
         .button:nth-child(5):hover {
-            background-color: #006400 !important; /* Dark Green */
+            background-color: #ffffbf; /* Color for Button 5 */
         }
 
         .button:nth-child(6):hover {
-            background-color: #add8e6 !important; /* Light Blue */
+            background-color: #e6f598; /* Color for Button 6 */
         }
 
         .button:nth-child(7):hover {
-            background-color: #000080 !important; /* Navy Blue */
+            background-color: #abdda4; /* Color for Button 7 */
         }
 
         .button:nth-child(8):hover {
-            background-color: #800080 !important; /* Purple */
+            background-color: #66c2a5; /* Color for Button 8 */
         }
 
         .button:nth-child(9):hover {
-            background-color: #ff00ff !important; /* Magenta */
+            background-color: #3288bd; /* Color for Button 9 */
         }
 
         /* Optional: Add some responsive behavior for mobile devices */
@@ -149,105 +112,7 @@
     </div>
 
     <script>
-        // JavaScript to handle interactions can be added later
-        // For now, we'll just log when buttons are clicked
-        const buttons = document.querySelectorAll('.button');
-        
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                console.log(button.textContent + ' button clicked');
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maze Walkers</title>
-    <!-- Adding the 'Sixtyfour Convergence' font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #333333; /* Dark gray background */
-            color: #ffffff; /* White text */
-            font-family: 'Sixtyfour Convergence', Arial, sans-serif; /* Using the custom font */
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        h1 {
-            margin-top: 50px;
-            font-size: 3em;
-            color: #f0f0f0;
-        }
-
-        .button {
-            background-color: #4682b4; /* Blue color */
-            border: none;
-            color: white;
-            padding: 20px 0; /* Bigger button height */
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            font-size: 20px; /* Larger text */
-            border-radius: 12px; /* Rounded corners */
-            width: 30%; /* Buttons take up 30% of the screen width */
-            margin: 15px auto; /* Center buttons horizontally with margin between */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #4169e1; /* Lighter blue on hover */
-        }
-
-        .button:active {
-            background-color: #2a4d70; /* Even darker blue on click */
-        }
-
-        .button-container {
-            margin-top: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        /* Optional: Add some responsive behavior for mobile devices */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .button {
-                padding: 18px 0;
-                font-size: 18px;
-                width: 90%; /* Full width for mobile devices */
-            }
-        }
-    </style>
-</head>
-<body>
-    <h1>Maze Walkers</h1>
-
-    <div class="button-container">
-        <button class="button">Button 1</button>
-        <button class="button">Button 2</button>
-        <button class="button">Button 3</button>
-        <button class="button">Button 4</button>
-        <button class="button">Button 5</button>
-        <button class="button">Button 6</button>
-        <button class="button">Button 7</button>
-        <button class="button">Button 8</button>
-        <button class="button">Button 9</button>
-    </div>
-
-    <script>
-        // JavaScript to handle interactions can be added later
-        // For now, we'll just log when buttons are clicked
+        // JavaScript to handle interactions
         const buttons = document.querySelectorAll('.button');
         
         buttons.forEach(button => {
