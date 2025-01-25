@@ -11,15 +11,18 @@
             background-color: #333333;
             color: #ffffff;
             text-align: center;
-            padding: 20px;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .exit-btn {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #b41628; /* Updated Exit Button color */
+            background-color: #b41628; /* Exit Button color */
             color: black;
             font-size: 20px;
             padding: 10px 20px;
@@ -36,12 +39,11 @@
 
         h1 {
             font-size: 3em;
+            margin-top: 50px; /* Adjusted for alignment */
             margin-bottom: 20px;
-            margin-top: 30px; /* Adjusted to move it higher */
         }
 
         .board {
-            position: relative;
             width: 250px;
             background-color: #aac4d7; /* Slightly darker scoreboard */
             color: #333333; /* Darker text on the scoreboard */
@@ -51,7 +53,6 @@
             font-family: 'Fredoka One', sans-serif;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             margin-bottom: 10px;
-            display: inline-block;
         }
 
         .board h2 {
@@ -109,17 +110,8 @@
             background-color: #d53e4f; /* Vibrant red (matches index.html hover) */
         }
 
-        .board-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-left: 20px;
-            margin-top: 20px;
-        }
-
         .footer {
-            margin-top: 5px; /* Reduced margin-top to bring it closer */
+            margin-top: 10px; /* Adjusted margin-top to move it closer to the board */
             font-size: 1.1em;
             text-align: center;
             color: white;
@@ -136,21 +128,13 @@
 <body>
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
     
-    <div class="board-container">
-        <div class="board">
-            <h2>Reaction Times</h2>
-            <div class="scores" id="score-list">
-                No scores yet.
-            </div>
-            <div class="mean" id="mean-score">
-                Mean: N/A
-            </div>
+    <div class="board">
+        <h2>Reaction Times</h2>
+        <div class="scores" id="score-list">
+            No scores yet.
         </div>
-        <div class="footer">
-            <span class="footer-text">
-                *if you reload the page or exit this
-                reaction test, all your scores are deleted
-            </span>
+        <div class="mean" id="mean-score">
+            Mean: N/A
         </div>
     </div>
 
@@ -158,6 +142,13 @@
     <button class="start-btn" onclick="startGame()">Start Test</button>
     <div class="box" id="reaction-box" onclick="stopTimer()"></div>
     <p class="message" id="message"></p>
+
+    <div class="footer">
+        <span class="footer-text">
+            *if you reload the page or exit this
+            reaction test, all your scores are deleted
+        </span>
+    </div>
 
     <script>
         let startTime, timeout;
