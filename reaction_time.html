@@ -39,6 +39,44 @@
             margin-bottom: 20px;
         }
 
+        .board {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 250px;
+            background-color: #d6e5f0; /* Light grayish-blue */
+            color: black;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            font-family: 'Fredoka One', sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .board h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .board .scores {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .board .mean {
+            margin-top: 15px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .board-footer {
+            text-align: center;
+            color: white;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
         .box {
             display: none;
             width: 200px;
@@ -55,23 +93,35 @@
         }
 
         .start-btn {
-            background-color: #254d6e;
-            color: white;
+            background-color: red;
+            color: black;
             font-size: 20px;
             padding: 10px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            font-family: 'Fredoka One', sans-serif;
             transition: background-color 0.3s;
         }
 
         .start-btn:hover {
-            background-color: #3288bd;
+            background-color: darkred;
         }
     </style>
 </head>
 <body>
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
+    <div class="board">
+        <h2>Reaction Times</h2>
+        <div class="scores" id="score-list">
+            No scores yet.
+        </div>
+        <div class="mean" id="mean-score">
+            Mean: N/A
+        </div>
+    </div>
+    <div class="board-footer">*if you reload the page or exit this reaction test, all your scores are deleted</div>
+
     <h1>Reaction Time Test</h1>
     <button class="start-btn" onclick="startGame()">Start Test</button>
     <div class="box" id="reaction-box" onclick="stopTimer()"></div>
@@ -79,6 +129,7 @@
 
     <script>
         let startTime, timeout;
+        let scores = [];
 
         function startGame() {
             const box = document.getElementById('reaction-box');
@@ -100,10 +151,20 @@
         function stopTimer() {
             const box = document.getElementById('reaction-box');
             const message = document.getElementById('message');
+            const scoreList = document.getElementById('score-list');
+            const meanScore = document.getElementById('mean-score');
 
             const reactionTime = Date.now() - startTime;
+            scores.push(reactionTime);
+
             box.style.display = 'none';
             message.textContent = `Your reaction time is ${reactionTime} ms!`;
+
+            // Update the score list and mean
+            scoreList.innerHTML = scores.map((score, index) => `Attempt ${index + 1}: ${score} ms`).join('<br>');
+            const mean = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+            meanScore.textContent = `Mean: ${mean.toFixed(2)} ms`;
+
             clearTimeout(timeout);
         }
     </script>
