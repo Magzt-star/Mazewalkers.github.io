@@ -6,51 +6,84 @@
     <title>Maze Walkers</title>
     <style>
         body {
-            background-color: #333; /* Dark gray background */
-            color: white;
+            background-color: #333333; /* Dark gray background */
+            color: #ffffff; /* White text */
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
-        
+
         h1 {
+            margin-top: 50px;
             font-size: 3em;
-            margin-top: 20px;
+            color: #f0f0f0;
         }
-        
-        .button-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 buttons per row */
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .button-container button {
-            background-color: #4682B4; /* Grayish blue */
-            color: white;
-            font-size: 1.5em;
-            padding: 20px 30px;
+
+        .button {
+            background-color: #4682b4; /* Blue color */
             border: none;
+            color: white;
+            padding: 20px 0; /* Bigger button height */
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 20px; /* Larger text */
             border-radius: 12px; /* Rounded corners */
+            width: 30%; /* Buttons take up 30% of the screen width */
+            margin: 15px auto; /* Center buttons horizontally with margin between */
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        
-        .button-container button:hover {
-            background-color: #5a9bd5; /* Lighter blue on hover */
+
+        .button:hover {
+            background-color: #4169e1; /* Lighter blue on hover */
+        }
+
+        .button:active {
+            background-color: #2a4d70; /* Even darker blue on click */
+        }
+
+        .button-container {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Optional: Add some responsive behavior for mobile devices */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .button {
+                padding: 18px 0;
+                font-size: 18px;
+                width: 90%; /* Full width for mobile devices */
+            }
         }
     </style>
 </head>
 <body>
     <h1>Maze Walkers</h1>
+
     <div class="button-container">
-        <button>Button 1</button>
-        <button>Button 2</button>
-        <button>Button 3</button>
-        <button>Button 4</button>
-        <button>Button 5</button>
-        <button>Button 6</button>
+        <button class="button">Start Game</button>
+        <button class="button">Options</button>
+        <button class="button">Exit</button>
     </div>
+
+    <script>
+        // JavaScript to handle interactions can be added later
+        // For now, we'll just log when buttons are clicked
+        const buttons = document.querySelectorAll('.button');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                console.log(button.textContent + ' button clicked');
+            });
+        });
+    </script>
 </body>
 </html>
