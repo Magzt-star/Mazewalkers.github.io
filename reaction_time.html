@@ -28,7 +28,7 @@
             top: 0;
         }
 
-        /* Exit button at top-right */
+        /* Exit button at top-right with the same font as the rest */
         .exit-btn {
             background-color: #b41628;
             color: black;
@@ -37,6 +37,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            font-family: 'Fredoka One', sans-serif; /* Same font */
             transition: background-color 0.3s ease;
         }
 
@@ -98,18 +99,18 @@
             background-color: #d53e4f; /* Vibrant red (matches index.html hover) */
         }
 
-        /* Footer (asterisks text) under the scoreboard */
+        /* Footer (asterisks text) directly under the scoreboard */
         .footer {
             margin-top: 10px;
             font-size: 1.1em;
-            text-align: center;
+            text-align: left;
             color: white;
+            margin-left: 20px;
         }
 
         .footer-text {
             display: block;
             white-space: pre-line; /* To allow splitting the text after 'this' */
-            text-align: left; /* Align the text to the left */
         }
 
         .box {
@@ -152,7 +153,7 @@
     <div class="box" id="reaction-box" onclick="stopTimer()"></div>
     <p class="message" id="message"></p>
 
-    <!-- Footer for the asterisks text -->
+    <!-- Footer for the asterisks text, now directly under the scoreboard -->
     <div class="footer">
         <span class="footer-text">
             *if you reload the page or exit this
