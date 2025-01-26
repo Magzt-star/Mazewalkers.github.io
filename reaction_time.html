@@ -19,14 +19,13 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #b41628; /* Updated Exit Button color */
+            background-color: #b41628;
             color: black;
             font-size: 20px;
             padding: 10px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-family: 'Fredoka One', sans-serif;
             transition: background-color 0.3s ease;
         }
 
@@ -36,19 +35,43 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom: 20px;
-            margin-top: 200px; /* Adjusted to move it lower */
+            margin-top: 50px; /* Moved up towards the blue squiggles */
+            margin-bottom: 10px;
+        }
+
+        .start-btn {
+            background-color: #3a506b;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px; /* Moved upwards closer to the blue oval */
+        }
+
+        .start-btn:hover {
+            background-color: #d53e4f;
+        }
+
+        .board-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 20px;
+            margin-top: 20px;
         }
 
         .board {
             position: relative;
             width: 250px;
-            background-color: #aac4d7; /* Slightly darker scoreboard */
-            color: #333333; /* Darker text on the scoreboard */
+            background-color: #aac4d7;
+            color: #333333;
             border-radius: 12px;
             padding: 20px;
             text-align: left;
-            font-family: 'Fredoka One', sans-serif;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             margin-bottom: 10px;
             display: inline-block;
@@ -71,11 +94,17 @@
             text-align: center;
         }
 
-        .board-footer {
+        .footer {
+            margin-top: 15px;
+            font-size: 1.1em;
             text-align: center;
-            font-size: 0.9em;
             color: white;
-            margin-top: 10px;
+        }
+
+        .footer-text {
+            display: block;
+            white-space: pre-line;
+            text-align: left;
         }
 
         .box {
@@ -92,46 +121,6 @@
             font-size: 1.5em;
             margin-top: 20px;
         }
-
-        .start-btn {
-            background-color: #3a506b; /* Muted navy blue (matches index.html) */
-            color: white;
-            font-size: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Fredoka One', sans-serif;
-            transition: background-color 0.3s;
-            margin-top: 20px; /* Added margin to separate from heading */
-        }
-
-        .start-btn:hover {
-            background-color: #d53e4f; /* Vibrant red (matches index.html hover) */
-        }
-
-        .board-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-left: 20px;
-            margin-top: 20px;
-        }
-
-        .footer {
-            margin-top: 15px;
-            font-size: 1.1em;
-            text-align: center;
-            color: white;
-        }
-
-        .footer-text {
-            display: block;
-            white-space: pre-line; /* To allow splitting the text after 'this' */
-            text-align: left; /* Align the text to the left */
-        }
-
     </style>
 </head>
 <body>
@@ -155,8 +144,8 @@
         </div>
     </div>
 
-    <h1>Reaction Time Test</h1>
-    <button class="start-btn" onclick="startGame()">Start Test</button>
+    <h1>Reaction Time Test</h1> <!-- Moved closer to the top -->
+    <button class="start-btn" onclick="startGame()">Start Test</button> <!-- Moved upwards -->
     <div class="box" id="reaction-box" onclick="stopTimer()"></div>
     <p class="message" id="message"></p>
 
