@@ -22,6 +22,7 @@
             background-color: #b41628;
             color: black;
             font-size: 20px;
+            font-family: 'Fredoka One', sans-serif;
             padding: 10px 20px;
             border: none;
             border-radius: 8px;
@@ -35,19 +36,20 @@
 
         h1 {
             font-size: 3em;
-            margin-top: 0; /* Aligned to the top of the scoreboard */
+            margin-top: -40px; /* Move up again by the same amount */
         }
 
         .start-btn {
             background-color: #3a506b;
             color: white;
             font-size: 20px;
+            font-family: 'Fredoka One', sans-serif;
             padding: 10px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 10px; /* Positioned just below the heading */
+            margin-top: -10px; /* Move up along with the heading */
         }
 
         .start-btn:hover {
@@ -138,8 +140,8 @@
         </div>
     </div>
 
-    <h1>Reaction Time Test</h1> <!-- Aligned to the top of the scoreboard -->
-    <button class="start-btn" onclick="startGame()">Start Test</button> <!-- Positioned just below the heading -->
+    <h1>Reaction Time Test</h1> <!-- Moved up again -->
+    <button class="start-btn" onclick="startGame()">Start Test</button> <!-- Moved up along with the heading -->
 
     <div class="box" id="reaction-box" onclick="stopTimer()"></div>
     <p class="message" id="message"></p>
@@ -193,4 +195,6 @@
         }
     </script>
 </body>
+</html>
+
 </html>
