@@ -10,28 +10,16 @@
             font-family: 'Fredoka One', sans-serif;
             background-color: #333333;
             color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        /* Header area for the exit button, title, and scoreboard */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
+            text-align: center;
             padding: 20px;
-            position: absolute;
-            top: 0;
+            margin: 0;
         }
 
-        /* Exit button at top-right, making sure it's aligned properly */
         .exit-btn {
-            background-color: #b41628;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #b41628; /* Updated Exit Button color */
             color: black;
             font-size: 20px;
             padding: 10px 20px;
@@ -40,23 +28,30 @@
             cursor: pointer;
             font-family: 'Fredoka One', sans-serif;
             transition: background-color 0.3s ease;
-            margin-right: 10px;
         }
 
         .exit-btn:hover {
             background-color: darkred;
         }
 
-        /* Scoreboard at top-left */
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            margin-top: 50px; /* Adjusted to move it higher */
+        }
+
         .board {
+            position: relative;
             width: 250px;
             background-color: #aac4d7; /* Slightly darker scoreboard */
             color: #333333; /* Darker text on the scoreboard */
             border-radius: 12px;
             padding: 20px;
+            text-align: left;
             font-family: 'Fredoka One', sans-serif;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin-right: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
         }
 
         .board h2 {
@@ -76,45 +71,11 @@
             text-align: center;
         }
 
-        /* Reaction Time Test Title centered */
-        h1 {
-            font-size: 3em;
-            margin-top: 100px;
-            margin-bottom: 20px;
+        .board-footer {
             text-align: center;
-            width: 100%;
-        }
-
-        /* Start Test Button */
-        .start-btn {
-            background-color: #3a506b; /* Muted navy blue (matches index.html) */
+            font-size: 0.9em;
             color: white;
-            font-size: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Fredoka One', sans-serif;
-            transition: background-color 0.3s;
-        }
-
-        .start-btn:hover {
-            background-color: #d53e4f; /* Vibrant red (matches index.html hover) */
-        }
-
-        /* Footer (asterisks text) directly under the scoreboard */
-        .footer {
             margin-top: 10px;
-            font-size: 1.1em;
-            text-align: left;
-            color: white;
-            margin-left: 20px;
-            position: relative;
-        }
-
-        .footer-text {
-            display: block;
-            white-space: pre-line; /* To allow splitting the text after 'this' */
         }
 
         .box {
@@ -132,11 +93,50 @@
             margin-top: 20px;
         }
 
+        .start-btn {
+            background-color: #3a506b; /* Muted navy blue (matches index.html) */
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Fredoka One', sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .start-btn:hover {
+            background-color: #d53e4f; /* Vibrant red (matches index.html hover) */
+        }
+
+        .board-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 1.1em;
+            text-align: center;
+            color: white;
+        }
+
+        .footer-text {
+            display: block;
+            white-space: pre-line; /* To allow splitting the text after 'this' */
+            text-align: left; /* Align the text to the left */
+        }
+
     </style>
 </head>
 <body>
-    <!-- Header for exit button, title, and scoreboard -->
-    <div class="header">
+    <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
+    
+    <div class="board-container">
         <div class="board">
             <h2>Reaction Times</h2>
             <div class="scores" id="score-list">
@@ -146,24 +146,18 @@
                 Mean: N/A
             </div>
         </div>
-        <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
+        <div class="footer">
+            <span class="footer-text">
+                *if you reload the page or exit this
+                reaction test, all your scores are deleted
+            </span>
+        </div>
     </div>
 
-    <!-- Reaction Time Test Title and Start Test Button -->
     <h1>Reaction Time Test</h1>
     <button class="start-btn" onclick="startGame()">Start Test</button>
-    
-    <!-- Reaction Time Box and Message -->
     <div class="box" id="reaction-box" onclick="stopTimer()"></div>
     <p class="message" id="message"></p>
-
-    <!-- Footer for the asterisks text, now directly under the scoreboard -->
-    <div class="footer">
-        <span class="footer-text">
-            *if you reload the page or exit this
-            reaction test, all your scores are deleted
-        </span>
-    </div>
 
     <script>
         let startTime, timeout;
