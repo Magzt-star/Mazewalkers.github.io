@@ -83,6 +83,11 @@
             white-space: pre-line;
         }
 
+        /* Move title and start button upwards */
+        .top-container {
+            margin-top: -40px;
+        }
+
         h1 {
             font-size: 3em;
             margin: 0;
@@ -146,19 +151,22 @@
             </div>
         </div>
 
-        <!-- Text aligned to the left beneath the scoreboard -->
+        <!-- Reformatted text with specific line breaks -->
         <div class="footer">
             <span class="footer-text">
-                *if you reload the page or exit this
-                reaction test, all your scores<br>are deleted
+                *if you reload the page or exit<br>
+                this reaction test, all your<br>
+                scores are deleted
             </span>
         </div>
     </div>
 
     <!-- Centralized container for Title and Start Button -->
     <div class="container">
-        <h1>Reaction Time Test</h1>
-        <button class="start-btn" id="start-button">Start Test</button>
+        <div class="top-container">
+            <h1>Reaction Time Test</h1>
+            <button class="start-btn" id="start-button">Start Test</button>
+        </div>
 
         <div class="box" id="reaction-box" onclick="stopTimer()"></div>
         <p class="message" id="message"></p>
@@ -207,3 +215,4 @@
     </script>
 </body>
 </html>
+
