@@ -69,9 +69,8 @@
             text-align: center;
         }
 
-        /* Move title and start button upwards */
         .top-container {
-            margin-top: -100px; /* Moved upwards further */
+            margin-top: -100px; /* Keeps it further up */
         }
 
         h1 {
@@ -145,6 +144,7 @@
             <button class="start-btn" id="start-button">Start Test</button>
         </div>
 
+        <!-- The box will appear below the "Start Test" button -->
         <div class="box" id="reaction-box" onclick="stopTimer()"></div>
         <p class="message" id="message"></p>
     </div>
@@ -162,7 +162,7 @@
             message.textContent = 'Wait for the box to appear...';
             box.style.display = 'none';
 
-            const delay = Math.random() * 2000 + 1000;
+            const delay = Math.random() * 2000 + 1000; // Random delay between 1-3 seconds
 
             timeout = setTimeout(() => {
                 startTime = Date.now();
@@ -183,6 +183,7 @@
             box.style.display = 'none';
             message.textContent = `Your reaction time is ${reactionTime} ms!`;
 
+            // Update the score list and mean
             scoreList.innerHTML = scores.map((score, index) => `Attempt ${index + 1}: ${score} ms`).join('<br>');
             const mean = scores.reduce((sum, score) => sum + score, 0) / scores.length;
             meanScore.textContent = `Mean: ${mean.toFixed(2)} ms`;
