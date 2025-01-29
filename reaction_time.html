@@ -69,23 +69,9 @@
             text-align: center;
         }
 
-        .footer {
-            margin-top: 10px;
-            font-size: 1.1em;
-            color: white;
-            font-family: 'Fredoka One', sans-serif;
-            text-align: left;
-            width: 250px;
-        }
-
-        .footer-text {
-            display: block;
-            white-space: pre-line;
-        }
-
         /* Move title and start button upwards */
         .top-container {
-            margin-top: -40px;
+            margin-top: -80px; /* Moved upwards further */
         }
 
         h1 {
@@ -134,6 +120,22 @@
             margin-top: 20px;
             font-family: 'Fredoka One', sans-serif;
         }
+
+        /* Fix the footer layout */
+        .footer {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: white;
+            font-family: 'Fredoka One', sans-serif;
+            text-align: left;
+            width: 250px;
+        }
+
+        .footer-text {
+            display: block;
+            white-space: pre-line;
+            word-wrap: break-word; /* Ensures line breaks */
+        }
     </style>
 </head>
 <body>
@@ -151,7 +153,7 @@
             </div>
         </div>
 
-        <!-- Reformatted text with specific line breaks -->
+        <!-- Reformatted footer text with exact line breaks -->
         <div class="footer">
             <span class="footer-text">
                 *if you reload the page or exit<br>
@@ -215,4 +217,3 @@
     </script>
 </body>
 </html>
-
