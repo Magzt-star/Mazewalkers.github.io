@@ -70,7 +70,7 @@
         }
 
         .top-container {
-            margin-top: -100px; /* Keeps it further up */
+            margin-top: -100px; /* Keeps title & button at the top */
         }
 
         h1 {
@@ -104,12 +104,15 @@
             height: 100vh;
         }
 
+        .box-container {
+            margin-top: 150px; /* Moves the box lower */
+        }
+
         .box {
             display: none;
             width: 200px;
             height: 200px;
             background-color: #4682b4;
-            margin: 50px auto;
             border-radius: 12px;
             cursor: pointer;
         }
@@ -144,9 +147,11 @@
             <button class="start-btn" id="start-button">Start Test</button>
         </div>
 
-        <!-- The box will appear below the "Start Test" button -->
-        <div class="box" id="reaction-box" onclick="stopTimer()"></div>
-        <p class="message" id="message"></p>
+        <!-- Box now appears lower -->
+        <div class="box-container">
+            <div class="box" id="reaction-box" onclick="stopTimer()"></div>
+            <p class="message" id="message"></p>
+        </div>
     </div>
 
     <script>
