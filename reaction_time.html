@@ -70,12 +70,12 @@
         }
 
         .top-container {
-            margin-top: -100px; /* Keeps title & button at the top */
+            margin-top: 50px; /* Reduced so it doesn't move up too much */
         }
 
         h1 {
             font-size: 3em;
-            margin: 0;
+            margin-bottom: 10px;
             font-family: 'Fredoka One', sans-serif;
         }
 
@@ -88,7 +88,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 10px;
             font-family: 'Fredoka One', sans-serif;
         }
 
@@ -100,12 +99,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
         }
 
         .box-container {
-            margin-top: 150px; /* Moves the box lower */
+            margin-top: 80px; /* Keeps the box lower on the page */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .box {
@@ -147,7 +149,7 @@
             <button class="start-btn" id="start-button">Start Test</button>
         </div>
 
-        <!-- Box now appears lower -->
+        <!-- Centered box now appears lower -->
         <div class="box-container">
             <div class="box" id="reaction-box" onclick="stopTimer()"></div>
             <p class="message" id="message"></p>
@@ -198,3 +200,4 @@
     </script>
 </body>
 </html>
+
