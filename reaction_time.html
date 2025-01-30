@@ -12,7 +12,13 @@
             color: #ffffff;
             text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         .exit-btn {
@@ -27,7 +33,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            font-family: 'Fredoka One', sans-serif;
         }
 
         .exit-btn:hover {
@@ -46,10 +51,9 @@
             background-color: #aac4d7;
             color: #333333;
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             text-align: left;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            font-family: 'Fredoka One', sans-serif;
         }
 
         .board h2 {
@@ -69,15 +73,9 @@
             text-align: center;
         }
 
-        /* Move title and start button upwards */
-        .top-container {
-            margin-top: -100px; /* Moved upwards further */
-        }
-
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin: 0;
-            font-family: 'Fredoka One', sans-serif;
         }
 
         .start-btn {
@@ -90,19 +88,10 @@
             cursor: pointer;
             transition: background-color 0.3s;
             margin-top: 10px;
-            font-family: 'Fredoka One', sans-serif;
         }
 
         .start-btn:hover {
             background-color: #d53e4f;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
         }
 
         .box {
@@ -118,7 +107,6 @@
         .message {
             font-size: 1.5em;
             margin-top: 20px;
-            font-family: 'Fredoka One', sans-serif;
         }
 
         .warning {
@@ -146,11 +134,9 @@
     </div>
 
     <!-- Centralized container for Title and Start Button -->
-    <div class="container">
-        <div class="top-container">
-            <h1>Reaction Time Test</h1>
-            <button class="start-btn" id="start-button">Start Test</button>
-        </div>
+    <div>
+        <h1>Reaction Time Test</h1>
+        <button class="start-btn" id="start-button">Start Test</button>
 
         <div class="box" id="reaction-box" onclick="stopTimer()"></div>
         <p class="message" id="message">Press button. Button start test.</p>
