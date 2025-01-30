@@ -34,6 +34,69 @@
             background-color: darkred;
         }
 
+        .board-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-align: left;
+        }
+
+        .board {
+            width: 250px;
+            background-color: #aac4d7;
+            color: #333333;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-family: 'Fredoka One', sans-serif;
+        }
+
+        .board h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .board .scores {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .board .mean {
+            margin-top: 15px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        /* Move title and start button upwards */
+        .top-container {
+            margin-top: -100px; /* Moved upwards further */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            font-family: 'Fredoka One', sans-serif;
+        }
+
+        .start-btn {
+            background-color: #3a506b;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            font-family: 'Fredoka One', sans-serif;
+        }
+
+        .start-btn:hover {
+            background-color: #d53e4f;
+        }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -69,9 +132,25 @@
 <body>
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
 
+    <!-- Scoreboard in top-left corner -->
+    <div class="board-container">
+        <div class="board">
+            <h2>Reaction Times</h2>
+            <div class="scores" id="score-list">
+                No scores yet.
+            </div>
+            <div class="mean" id="mean-score">
+                Mean: N/A
+            </div>
+        </div>
+    </div>
+
+    <!-- Centralized container for Title and Start Button -->
     <div class="container">
-        <h1>Reaction Time Test</h1>
-        <button class="start-btn" id="start-button">Start Test</button>
+        <div class="top-container">
+            <h1>Reaction Time Test</h1>
+            <button class="start-btn" id="start-button">Start Test</button>
+        </div>
 
         <div class="box" id="reaction-box" onclick="stopTimer()"></div>
         <p class="message" id="message"></p>
@@ -81,21 +160,19 @@
     <script>
         let startTime, timeout;
         let scores = [];
-        let fastClickCount = 0;
         let testRunning = false; // Track if the test has started
-        const AUTOCLICK_THRESHOLD = 50;  // Below this is suspicious
-        const MAX_FAST_CLICKS = 3;  // Number of strikes before detection
-        let testDisabled = false;
+        let boxVisible = false; // Track if the box is visible
+        const AUTOCLICK_THRESHOLD = 50;  // Clicking faster than 50ms = autoclicker
 
         document.getElementById('start-button').addEventListener('click', startGame);
         document.body.addEventListener('click', detectEarlyClick);
 
         function startGame() {
-            if (testDisabled) return;
-
-            testRunning = true; // Test has started
+            testRunning = true;
+            boxVisible = false; // Reset box visibility
             const box = document.getElementById('reaction-box');
             const message = document.getElementById('message');
+
             message.textContent = 'Wait for the box to appear...';
             box.style.display = 'none';
 
@@ -105,44 +182,48 @@
                 startTime = Date.now();
                 box.style.display = 'block';
                 message.textContent = 'Click the box as fast as you can!';
+                boxVisible = true; // Box is now visible
             }, delay);
         }
 
         function stopTimer() {
-            if (testDisabled) return;
+            if (!boxVisible) return; // Ignore clicks when the box is not visible
 
             const box = document.getElementById('reaction-box');
             const message = document.getElementById('message');
+            const scoreList = document.getElementById('score-list');
+            const meanScore = document.getElementById('mean-score');
             const warning = document.getElementById('warning');
 
             const reactionTime = Date.now() - startTime;
 
-            // Check for autoclicker behavior
+            // If reaction time is too fast, assume autoclicker and redirect
             if (reactionTime < AUTOCLICK_THRESHOLD) {
-                fastClickCount++;
-                if (fastClickCount >= MAX_FAST_CLICKS) {
-                    testDisabled = true;
-                    warning.style.display = 'block';
-                    message.textContent = 'Autoclicker detected! Redirecting...';
+                warning.style.display = 'block';
+                message.textContent = 'Autoclicker detected! Redirecting...';
 
-                    // Redirect to the main page after 2 seconds
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 2000);
-                    return;
-                }
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+                return;
             }
 
-            scores.push(reactionTime);
             box.style.display = 'none';
             message.textContent = `Your reaction time is ${reactionTime} ms!`;
+
+            // Update scores
+            scores.push(reactionTime);
+            scoreList.innerHTML = scores.map((score, index) => `Attempt ${index + 1}: ${score} ms`).join('<br>');
+
+            // Calculate mean reaction time
+            const mean = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+            meanScore.textContent = `Mean: ${mean.toFixed(2)} ms`;
+
+            clearTimeout(timeout);
         }
 
         function detectEarlyClick(event) {
-            const box = document.getElementById('reaction-box');
-
-            // If the test is running and the box is NOT visible, it's an early click
-            if (testRunning && box.style.display === 'none' && event.target.id !== 'start-button') {
+            if (testRunning && !boxVisible && event.target.id !== 'start-button') {
                 document.getElementById('message').textContent = 'Too early! Try again.';
                 clearTimeout(timeout);
                 testRunning = false; // Reset test
