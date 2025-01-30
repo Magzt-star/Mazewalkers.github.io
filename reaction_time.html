@@ -69,9 +69,15 @@
             text-align: center;
         }
 
-        /* Move title and start button upwards */
+        /* Initially, title and button are high up */
         .top-container {
-            margin-top: -100px; /* Moved upwards further */
+            margin-top: -100px;
+            transition: margin-top 0.5s ease;
+        }
+
+        /* After test starts, move everything down */
+        .lowered {
+            margin-top: 100px !important;
         }
 
         h1 {
@@ -147,7 +153,7 @@
 
     <!-- Centralized container for Title and Start Button -->
     <div class="container">
-        <div class="top-container">
+        <div class="top-container" id="top-container">
             <h1>Reaction Time Test</h1>
             <button class="start-btn" id="start-button">Start Test</button>
         </div>
@@ -160,8 +166,8 @@
     <script>
         let startTime, timeout;
         let scores = [];
-        let testRunning = false; // Track if the test has started
-        let boxVisible = false; // Track if the box is visible
+        let testRunning = false;
+        let boxVisible = false;
         const AUTOCLICK_THRESHOLD = 50;  // Clicking faster than 50ms = autoclicker
 
         document.getElementById('start-button').addEventListener('click', startGame);
@@ -169,9 +175,13 @@
 
         function startGame() {
             testRunning = true;
-            boxVisible = false; // Reset box visibility
+            boxVisible = false;
             const box = document.getElementById('reaction-box');
             const message = document.getElementById('message');
+            const topContainer = document.getElementById('top-container');
+
+            // Move everything down
+            topContainer.classList.add('lowered');
 
             message.textContent = 'Wait for the box to appear...';
             box.style.display = 'none';
@@ -182,12 +192,12 @@
                 startTime = Date.now();
                 box.style.display = 'block';
                 message.textContent = 'Click the box as fast as you can!';
-                boxVisible = true; // Box is now visible
+                boxVisible = true;
             }, delay);
         }
 
         function stopTimer() {
-            if (!boxVisible) return; // Ignore clicks when the box is not visible
+            if (!boxVisible) return;
 
             const box = document.getElementById('reaction-box');
             const message = document.getElementById('message');
@@ -197,7 +207,7 @@
 
             const reactionTime = Date.now() - startTime;
 
-            // If reaction time is too fast, assume autoclicker and redirect
+            // Detect autoclickers
             if (reactionTime < AUTOCLICK_THRESHOLD) {
                 warning.style.display = 'block';
                 message.textContent = 'Autoclicker detected! Redirecting...';
@@ -211,11 +221,9 @@
             box.style.display = 'none';
             message.textContent = `Your reaction time is ${reactionTime} ms!`;
 
-            // Update scores
             scores.push(reactionTime);
             scoreList.innerHTML = scores.map((score, index) => `Attempt ${index + 1}: ${score} ms`).join('<br>');
 
-            // Calculate mean reaction time
             const mean = scores.reduce((sum, score) => sum + score, 0) / scores.length;
             meanScore.textContent = `Mean: ${mean.toFixed(2)} ms`;
 
@@ -226,9 +234,10 @@
             if (testRunning && !boxVisible && event.target.id !== 'start-button') {
                 document.getElementById('message').textContent = 'Too early! Try again.';
                 clearTimeout(timeout);
-                testRunning = false; // Reset test
+                testRunning = false;
             }
         }
     </script>
 </body>
 </html>
+
