@@ -96,39 +96,36 @@
         let movingLeft = false;
 
         function moveStickman() {
-            if (movingRight) {
+            const maxRight = window.innerWidth - stickman.clientWidth; // Right edge
+            const minLeft = 0; // Left edge
+
+            if (movingRight && position < maxRight) {
                 position += speed;
-                if (position > window.innerWidth) {
-                    position = -stickman.clientWidth; // Wrap to left
-                }
                 stickman.style.transform = `translateX(${position}px) scaleX(1)`;
             }
-            if (movingLeft) {
+            if (movingLeft && position > minLeft) {
                 position -= speed;
-                if (position < -stickman.clientWidth) {
-                    position = window.innerWidth; // Wrap to right
-                }
                 stickman.style.transform = `translateX(${position}px) scaleX(-1)`;
             }
         }
 
         document.addEventListener("keydown", (event) => {
-            if (event.key === "d" || event.key === "D") {
+            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
                 movingRight = true;
                 stickman.play();
             }
-            if (event.key === "a" || event.key === "A") {
+            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
                 movingLeft = true;
                 stickman.play();
             }
         });
 
         document.addEventListener("keyup", (event) => {
-            if (event.key === "d" || event.key === "D") {
+            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
                 movingRight = false;
                 stickman.pause();
             }
-            if (event.key === "a" || event.key === "A") {
+            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
                 movingLeft = false;
                 stickman.pause();
             }
