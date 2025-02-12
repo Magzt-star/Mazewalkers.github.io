@@ -30,6 +30,17 @@
             background-color: #aaaaaa;
             border-radius: 0;
             transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        /* Stickman video */
+        .stickman {
+            position: absolute;
+            bottom: 10px;
+            left: 50%; /* Start at center */
+            width: 80px; /* Adjust as needed */
+            height: auto;
+            transform: translateX(-50%);
         }
 
         /* Controls box */
@@ -68,13 +79,58 @@
 
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
 
-    <div class="game-container"></div>
+    <div class="game-container">
+        <video id="stickman" class="stickman" src="stickman_walk.mp4" loop></video>
+    </div>
 
     <div class="controls">
         SPACE to jump <br>
         ARROWS or W A S D to move <br>
         ENTER for settings
     </div>
+
+    <script>
+        const stickman = document.getElementById("stickman");
+        let position = window.innerWidth / 2; // Start in the center
+        let speed = 5;
+        let movingRight = false;
+        let movingLeft = false;
+
+        function moveStickman() {
+            if (movingRight) {
+                position += speed;
+                stickman.style.transform = `translateX(${position}px) scaleX(1)`;
+            }
+            if (movingLeft) {
+                position -= speed;
+                stickman.style.transform = `translateX(${position}px) scaleX(-1)`;
+            }
+        }
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "d" || event.key === "D") {
+                movingRight = true;
+                stickman.play();
+            }
+            if (event.key === "a" || event.key === "A") {
+                movingLeft = true;
+                stickman.play();
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            if (event.key === "d" || event.key === "D") {
+                movingRight = false;
+                stickman.pause();
+            }
+            if (event.key === "a" || event.key === "A") {
+                movingLeft = false;
+                stickman.pause();
+            }
+        });
+
+        setInterval(moveStickman, 20);
+    </script>
 
 </body>
 </html>
