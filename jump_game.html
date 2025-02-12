@@ -39,7 +39,6 @@
             bottom: 0;
             left: 50%; /* Start in the center */
             height: 100%; /* Fills the game stripe */
-            transform: translateX(-50%);
         }
 
         /* Controls box */
@@ -101,11 +100,13 @@
 
             if (movingRight && position < maxRight) {
                 position += speed;
-                stickman.style.transform = `translateX(${position}px) scaleX(1)`;
+                stickman.style.left = position + "px";
+                stickman.style.transform = "scaleX(1)";
             }
             if (movingLeft && position > minLeft) {
                 position -= speed;
-                stickman.style.transform = `translateX(${position}px) scaleX(-1)`;
+                stickman.style.left = position + "px";
+                stickman.style.transform = "scaleX(-1)";
             }
         }
 
