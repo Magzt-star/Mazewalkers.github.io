@@ -34,8 +34,9 @@ body {
     bottom: 0;
     left: 50%;
     height: 100%;
-    object-fit: cover; /* Ensures the video fills the container */
-    clip-path: inset(0 10% 0 10%); /* Crops the left and right edges */
+    object-fit: cover;
+    /* Crop the video to show only the stickman */
+    clip-path: inset(10% 30% 10% 30%);
 }
 
 /* Controls box */
