@@ -35,7 +35,7 @@ body {
     left: 50%;
     height: 100%;
     object-fit: cover; /* Ensures the video fills the container */
-    clip-path: inset(0 30% 0 15%); /* Crops 15% from the left, 30% from the right */
+    clip-path: inset(0 60% 0 45%); /* Crops 45% from the left, 60% from the right */
     transform: translateX(-50%);
 }
 
