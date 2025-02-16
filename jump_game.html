@@ -12,15 +12,15 @@
     <!-- Exit Button -->
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
 
-    <!-- Game Container with GIF -->
+    <!-- Game Container with Stickman -->
     <div class="game-container">
-        <img id="stickman" class="stickman" src="stickman-walk-unscreen.gif" alt="Walking Stickman">
+        <img id="stickman" class="stickman" src="stickman-idle.png" alt="Stickman">
     </div>
 
     <!-- Controls Display -->
     <div class="controls">
         SPACE to jump <br>
-        ARROWS or A/D to move <br>
+        ARROWS or W A S D to move <br>
         ENTER for settings
     </div>
 
@@ -32,7 +32,7 @@
         let movingRight = false;
         let movingLeft = false;
 
-        // Move the stickman based on key presses
+        // Move the stickman horizontally
         function moveStickman() {
             const maxRight = window.innerWidth - stickman.clientWidth;
             const minLeft = 0;
@@ -49,23 +49,27 @@
             }
         }
 
-        // Listen for key presses
+        // Event listeners for key press
         document.addEventListener("keydown", (event) => {
             if (["d", "D", "ArrowRight"].includes(event.key)) {
                 movingRight = true;
+                stickman.src = "stickman-walk-unscreen.gif";
             }
             if (["a", "A", "ArrowLeft"].includes(event.key)) {
                 movingLeft = true;
+                stickman.src = "stickman-walk-unscreen.gif";
             }
         });
 
-        // Stop movement on key release
+        // Stop walking when keys are released
         document.addEventListener("keyup", (event) => {
             if (["d", "D", "ArrowRight"].includes(event.key)) {
                 movingRight = false;
+                if (!movingLeft) stickman.src = "stickman-idle.png";
             }
             if (["a", "A", "ArrowLeft"].includes(event.key)) {
                 movingLeft = false;
+                if (!movingRight) stickman.src = "stickman-idle.png";
             }
         });
 
