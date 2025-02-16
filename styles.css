@@ -28,15 +28,15 @@ body {
     overflow: hidden;
 }
 
-/* Stickman video with cropping */
+/* Stickman video with side cropping */
 .stickman {
     position: absolute;
     bottom: 0;
     left: 50%;
     height: 100%;
-    object-fit: cover;
-    /* Crop the video to show only the stickman */
-    clip-path: inset(10% 30% 10% 30%);
+    object-fit: cover; /* Ensures the video fills the container */
+    clip-path: inset(0 60% 0 20%); /* Crops sides: left 20%, right 60% */
+    transform: translateX(-50%);
 }
 
 /* Controls box */
