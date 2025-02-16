@@ -9,18 +9,22 @@
 </head>
 <body>
 
+    <!-- Exit Button -->
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
 
+    <!-- Game Container with GIF -->
     <div class="game-container">
-        <video id="stickman" class="stickman" src="stickman_walk.mp4" loop></video>
+        <img id="stickman" class="stickman" src="stickman-walk-unscreen.gif" alt="Walking Stickman">
     </div>
 
+    <!-- Controls Display -->
     <div class="controls">
         SPACE to jump <br>
         ARROWS or W A S D to move <br>
         ENTER for settings
     </div>
 
+    <!-- JavaScript for Movement -->
     <script>
         const stickman = document.getElementById("stickman");
         let position = window.innerWidth / 2;
@@ -28,6 +32,7 @@
         let movingRight = false;
         let movingLeft = false;
 
+        // Move the stickman based on key presses
         function moveStickman() {
             const maxRight = window.innerWidth - stickman.clientWidth;
             const minLeft = 0;
@@ -44,28 +49,27 @@
             }
         }
 
+        // Listen for key presses
         document.addEventListener("keydown", (event) => {
-            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
+            if (["d", "D", "ArrowRight"].includes(event.key)) {
                 movingRight = true;
-                stickman.play();
             }
-            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
+            if (["a", "A", "ArrowLeft"].includes(event.key)) {
                 movingLeft = true;
-                stickman.play();
             }
         });
 
+        // Stop movement on key release
         document.addEventListener("keyup", (event) => {
-            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
+            if (["d", "D", "ArrowRight"].includes(event.key)) {
                 movingRight = false;
-                stickman.pause();
             }
-            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
+            if (["a", "A", "ArrowLeft"].includes(event.key)) {
                 movingLeft = false;
-                stickman.pause();
             }
         });
 
+        // Move the stickman every 20ms
         setInterval(moveStickman, 20);
     </script>
 
