@@ -33,9 +33,9 @@ body {
     position: absolute;
     bottom: 0;
     left: 50%;
-    height: 100%;
+    width: 120px; /* Adjust size here */
+    height: auto;
     transform: translateX(-50%);
-    object-fit: contain; /* Ensures the stickman maintains its aspect ratio */
 }
 
 /* Controls box */

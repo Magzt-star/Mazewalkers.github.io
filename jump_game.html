@@ -27,57 +27,51 @@
     <!-- JavaScript for Movement -->
     <script>
         const stickman = document.getElementById("stickman");
-        let position = window.innerWidth / 2;
+        let position = window.innerWidth / 2; 
         let speed = 5;
         let movingRight = false;
         let movingLeft = false;
-
+    
         function moveStickman() {
-            const maxRight = window.innerWidth - stickman.clientWidth;
-            const minLeft = 0;
-
+            const maxRight = window.innerWidth - stickman.clientWidth; 
+            const minLeft = 0; 
+    
             if (movingRight && position < maxRight) {
                 position += speed;
                 stickman.style.left = position + "px";
-                stickman.style.transform = "scaleX(1)"; // Face right
+                stickman.style.transform = "scaleX(1)";
             }
             if (movingLeft && position > minLeft) {
                 position -= speed;
                 stickman.style.left = position + "px";
-                stickman.style.transform = "scaleX(-1)"; // Face left
+                stickman.style.transform = "scaleX(-1)";
             }
         }
-
-        function updateAnimation() {
-            if (movingRight || movingLeft) {
-                stickman.src = "stickman-walk-unscreen.gif"; // Walking animation
-            } else {
-                stickman.src = "stickman-idle.png"; // Idle state
-            }
-        }
-
+    
         document.addEventListener("keydown", (event) => {
-            if (["d", "D", "ArrowRight"].includes(event.key)) {
+            if ((event.key === "d" || event.key === "D" || event.key === "ArrowRight") && !movingRight) {
                 movingRight = true;
+                stickman.src = "stickman-walk.gif"; // Switch to walking animation
             }
-            if (["a", "A", "ArrowLeft"].includes(event.key)) {
+            if ((event.key === "a" || event.key === "A" || event.key === "ArrowLeft") && !movingLeft) {
                 movingLeft = true;
+                stickman.src = "stickman-walk.gif"; // Switch to walking animation
             }
-            updateAnimation();
         });
-
+    
         document.addEventListener("keyup", (event) => {
-            if (["d", "D", "ArrowRight"].includes(event.key)) {
+            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
                 movingRight = false;
+                stickman.src = "stickman-idle.gif"; // Switch back to idle
             }
-            if (["a", "A", "ArrowLeft"].includes(event.key)) {
+            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
                 movingLeft = false;
+                stickman.src = "stickman-idle.gif"; // Switch back to idle
             }
-            updateAnimation();
         });
-
+    
         setInterval(moveStickman, 20);
-    </script>
+    </script>    
 
 </body>
 </html>
