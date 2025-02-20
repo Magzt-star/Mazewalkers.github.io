@@ -12,7 +12,7 @@
     <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
 
     <div class="game-container">
-        <video id="stickman" class="stickman" src="stickman_walk.mp4" loop></video>
+        <img id="stickman" class="stickman" src="stickman-idle.png">
     </div>
 
     <div class="controls">
@@ -21,53 +21,7 @@
         ENTER for settings
     </div>
 
-    <script>
-        const stickman = document.getElementById("stickman");
-        let position = window.innerWidth / 2;
-        let speed = 5;
-        let movingRight = false;
-        let movingLeft = false;
-
-        function moveStickman() {
-            const maxRight = window.innerWidth - stickman.clientWidth;
-            const minLeft = 0;
-
-            if (movingRight && position < maxRight) {
-                position += speed;
-                stickman.style.left = position + "px";
-                stickman.style.transform = "scaleX(1)";
-            }
-            if (movingLeft && position > minLeft) {
-                position -= speed;
-                stickman.style.left = position + "px";
-                stickman.style.transform = "scaleX(-1)";
-            }
-        }
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
-                movingRight = true;
-                stickman.play();
-            }
-            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
-                movingLeft = true;
-                stickman.play();
-            }
-        });
-
-        document.addEventListener("keyup", (event) => {
-            if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
-                movingRight = false;
-                stickman.pause();
-            }
-            if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
-                movingLeft = false;
-                stickman.pause();
-            }
-        });
-
-        setInterval(moveStickman, 20);
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
