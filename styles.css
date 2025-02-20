@@ -28,14 +28,14 @@ body {
     overflow: hidden;
 }
 
-/* Stickman video with side cropping */
+/* Stickman video with cropping */
 .stickman {
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: 120px; /* Adjust size here */
-    height: auto;
-    transform: translateX(-50%);
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the container */
+    clip-path: inset(0 10% 0 10%); /* Crops the left and right edges */
 }
 
 /* Controls box */
