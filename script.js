@@ -4,6 +4,14 @@ let speed = 5;
 let movingRight = false;
 let movingLeft = false;
 
+// Function to restart GIF animation
+function restartGif() {
+    stickman.src = "stickman-idle.png"; // Set to idle first
+    setTimeout(() => {
+        stickman.src = "stickman-walk-unscreen.gif"; // Then restart animation
+    }, 10); // Small delay ensures it reloads
+}
+
 function moveStickman() {
     const maxRight = window.innerWidth - stickman.clientWidth;
     const minLeft = 0;
@@ -23,11 +31,11 @@ function moveStickman() {
 document.addEventListener("keydown", (event) => {
     if (!movingRight && (event.key === "d" || event.key === "D" || event.key === "ArrowRight")) {
         movingRight = true;
-        stickman.src = "stickman-walk-unscreen.gif"; // Walking animation
+        restartGif(); // Restart GIF when moving
     }
     if (!movingLeft && (event.key === "a" || event.key === "A" || event.key === "ArrowLeft")) {
         movingLeft = true;
-        stickman.src = "stickman-walk-unscreen.gif"; // Walking animation
+        restartGif();
     }
 });
 
