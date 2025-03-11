@@ -7,7 +7,7 @@ let movingLeft = false;
 // Function to switch to walking animation and resize
 function startWalking(direction) {
     stickman.src = "stickman-walk-unscreen.gif";
-    stickman.style.transform = `scale(2) scaleX(${direction})`; // Make bigger and face direction
+    stickman.style.transform = `scale(2) scaleX(${movingRight ? 1 : -1})`; // Make bigger and face direction
     stickman.style.bottom = "80px"; // Move higher when walking
 }
 
