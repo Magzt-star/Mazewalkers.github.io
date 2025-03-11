@@ -4,14 +4,19 @@ let speed = 5;
 let movingRight = false;
 let movingLeft = false;
 
-// Function to restart GIF animation
-function restartGif() {
-    stickman.src = "stickman-idle.png"; // Set to idle first
-    setTimeout(() => {
-        stickman.src = "stickman-walk-unscreen.gif"; // Then restart animation
-    }, 10); // Small delay ensures it reloads
+// Function to switch to walking animation and resize
+function startWalking() {
+    stickman.src = "stickman-walk-unscreen.gif";
+    stickman.style.transform = "scale(2)"; // Double size when walking
 }
 
+// Function to switch back to idle and resize
+function stopWalking() {
+    stickman.src = "stickman-idle.png";
+    stickman.style.transform = "scale(0.5)"; // Half size when idle
+}
+
+// Function to move the stickman
 function moveStickman() {
     const maxRight = window.innerWidth - stickman.clientWidth;
     const minLeft = 0;
@@ -19,34 +24,34 @@ function moveStickman() {
     if (movingRight && position < maxRight) {
         position += speed;
         stickman.style.left = position + "px";
-        stickman.style.transform = "scaleX(1)";
+        stickman.style.scaleX = "1";
     }
     if (movingLeft && position > minLeft) {
         position -= speed;
         stickman.style.left = position + "px";
-        stickman.style.transform = "scaleX(-1)";
+        stickman.style.scaleX = "-1";
     }
 }
 
 document.addEventListener("keydown", (event) => {
     if (!movingRight && (event.key === "d" || event.key === "D" || event.key === "ArrowRight")) {
         movingRight = true;
-        restartGif(); // Restart GIF when moving
+        startWalking();
     }
     if (!movingLeft && (event.key === "a" || event.key === "A" || event.key === "ArrowLeft")) {
         movingLeft = true;
-        restartGif();
+        startWalking();
     }
 });
 
 document.addEventListener("keyup", (event) => {
     if (event.key === "d" || event.key === "D" || event.key === "ArrowRight") {
         movingRight = false;
-        stickman.src = "stickman-idle.png"; // Back to idle
+        stopWalking();
     }
     if (event.key === "a" || event.key === "A" || event.key === "ArrowLeft") {
         movingLeft = false;
-        stickman.src = "stickman-idle.png"; // Back to idle
+        stopWalking();
     }
 });
 
