@@ -8,12 +8,14 @@ let movingLeft = false;
 function startWalking() {
     stickman.src = "stickman-walk-unscreen.gif";
     stickman.style.transform = "scale(2)"; // Double size when walking
+    stickman.style.bottom = "50px"; // Move higher when walking
 }
 
 // Function to switch back to idle and resize
 function stopWalking() {
     stickman.src = "stickman-idle.png";
     stickman.style.transform = "scale(0.5)"; // Half size when idle
+    stickman.style.bottom = "10px"; // Move lower when idle
 }
 
 // Function to move the stickman
